@@ -38,8 +38,11 @@ public class Loading {
 
     public static void openProgress(String openPath) {
         File savePath = new File(openPath);
+
         if (savePath.isDirectory()) {
+
             for (File items : savePath.listFiles((path, name) -> name.toLowerCase().endsWith(".dat"))) {
+
                 try (FileInputStream opening = new FileInputStream(items.toString());
                      ObjectInputStream loadSave = new ObjectInputStream(opening)) {
                     GameProgress gameProgress = (GameProgress) loadSave.readObject();
