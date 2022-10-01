@@ -32,5 +32,7 @@ public class Main {
         Saving.zipFiles(SAVING_PATH);
 
         Saving.removeSaves(SAVING_PATH);
+
+        Loading.openZip(SAVING_PATH);
     }
 }
