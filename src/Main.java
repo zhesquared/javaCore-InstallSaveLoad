@@ -34,5 +34,7 @@ public class Main {
         Saving.removeSaves(SAVING_PATH);
 
         Loading.openZip(SAVING_PATH);
+
+        Loading.openProgress(SAVING_PATH);
     }
 }
