@@ -29,6 +29,6 @@ public class Main {
         Saving.saveGame(SAVING_PATH, progress2);
         Saving.saveGame(SAVING_PATH, progress3);
 
-
+        Saving.zipFiles(SAVING_PATH);
     }
 }
