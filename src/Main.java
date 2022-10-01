@@ -30,5 +30,7 @@ public class Main {
         Saving.saveGame(SAVING_PATH, progress3);
 
         Saving.zipFiles(SAVING_PATH);
+
+        Saving.removeSaves(SAVING_PATH);
     }
 }

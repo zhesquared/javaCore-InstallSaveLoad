@@ -25,14 +25,13 @@ public class Saving {
     }
 
     public static void zipFiles(String zipPath) {
-        File file = new File(zipPath);
+        File savePath = new File(zipPath);
 
         try (ZipOutputStream archiver = new ZipOutputStream(
-                new FileOutputStream(zipPath + DATE_FORMAT.format(new Date()) + ".zip"))) {
-            if (file.isDirectory()) {
-                for (File item : file.listFiles((path, name) -> name.toLowerCase().endsWith(".dat"))) {
-                    //фильтр по файлам сохранений
-                    String name = item.toString();
+                new FileOutputStream(zipPath + DATE_FORMAT.format(new Date()) + "_archive.zip"))) {
+            if (savePath.isDirectory()) {
+                for (File items : savePath.listFiles((path, name) -> name.toLowerCase().endsWith(".dat"))) { //фильтр по файлам сохранений
+                    String name = items.toString();
                     FileInputStream savesArchive = new FileInputStream(name);
                     ZipEntry entry = new ZipEntry(name);
                     archiver.putNextEntry(entry);
@@ -43,9 +42,18 @@ public class Saving {
                     savesArchive.close();
                 }
             }
-
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
+        }
+    }
+
+    public static void removeSaves(String savePath) {
+        File removePath = new File(savePath);
+
+        if (removePath.isDirectory()) {
+            for (File items : removePath.listFiles((path, name) -> name.toLowerCase().endsWith(".dat"))) {
+                items.delete();
+            }
         }
     }
 }
